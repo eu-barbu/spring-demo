@@ -2,6 +2,4 @@
 
 Hello World!
 
-Second commit.
-
 Third commit.
