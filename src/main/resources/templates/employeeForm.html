@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<h2>Form page</h2>
+<form th:action="@{/submitEmployee}" th:object="${employee}" method="post">
+    <div class="form-group row">
+        <label>Name:</label>
+        <input type="text" th:field="${employee.name}">
+    </div>
+
+    <div class="form-group row">
+        <label>Salary:</label>
+        <input type="text" th:field="${employee.salary}">
+    </div>
+
+    <div class="form-group row">
+        <label>Department:</label>
+        <input type="text" th:field="${employee.department}">
+    </div>
+
+    <div class="form-group row">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+</body>
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</html>
