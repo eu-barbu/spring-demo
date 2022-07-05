@@ -11,13 +11,18 @@
 <h2>Form page</h2>
 <form th:action="@{/submitEmployee}" th:object="${employee}" method="post">
     <div class="form-group row">
-        <label>Name:</label>
-        <input type="text" th:field="${employee.name}">
+        <label>Firstname:</label>
+        <input type="text" th:field="${employee.firstname}">
+    </div>
+
+    <div class="form-group row">
+        <label>Lastname:</label>
+        <input type="text" th:field="${employee.lastname}">
     </div>
 
     <div class="form-group row">
         <label>Salary:</label>
-        <input type="text" th:field="${employee.salary}">
+        <input type="text" th:field="${employee.monthlySalary}">
     </div>
 
     <div class="form-group row">

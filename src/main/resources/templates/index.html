@@ -65,15 +65,17 @@
 <table class="table table-success table-striped">
     <thead>
         <tr>
-            <td>Name</td>
+            <td>Firstname</td>
+            <td>Lastname</td>
             <td>Salary</td>
             <td>Department</td>
         </tr>
     </thead>
     <tbody>
     <tr th:each="employee : ${employeeList}">
-        <td th:text="${employee.name}"/>
-        <td th:text="${employee.salary}"/>
+        <td th:text="${employee.firstname}"/>
+        <td th:text="${employee.lastname}"/>
+        <td th:text="${employee.monthlySalary}"/>
         <td th:text="${employee.department}"/>
     </tr>
     </tbody>
@@ -82,15 +84,17 @@
 <table class="table table-info table-striped">
     <thead>
     <tr>
-        <td>Name</td>
+        <td>Firstname</td>
+        <td>Lastname</td>
         <td>Salary</td>
         <td>Department</td>
     </tr>
     </thead>
     <tbody>
     <tr th:each="employee : ${employeeList}">
-        <td th:text="${employee.name}"/>
-        <td th:text="${employee.salary}"/>
+        <td th:text="${employee.firstname}"/>
+        <td th:text="${employee.lastname}"/>
+        <td th:text="${employee.monthlySalary}"/>
         <td th:text="${employee.department}"/>
     </tr>
     </tbody>
