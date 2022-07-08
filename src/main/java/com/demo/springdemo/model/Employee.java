@@ -27,7 +27,8 @@ public class Employee {
     @Column(name = "monthly_salary")
     private int monthlySalary;
 
-    @Column(name = "department")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "id_department")
+    private Department department;
 
 }

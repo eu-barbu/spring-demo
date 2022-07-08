@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -22,7 +20,6 @@ public class IndexController {
         Employee myEmployee = Employee.builder()
                 .firstname("Max")
                 .monthlySalary(1600)
-                .department("Logists")
                 .build();
 
         System.out.println(myEmployee.toString());
@@ -40,7 +37,7 @@ public class IndexController {
 
         return "index";
     }
-
+/*
     @GetMapping(value = "/employeeForm")
     public String employeeForm(Model model){
         Employee myEmployee = Employee.builder().build();
@@ -54,7 +51,7 @@ public class IndexController {
         saveToDatbase(employee);
         return "index";
     }
-
+*/
     private void saveToDatbase(Employee employee) {
         employeeRepository.save(employee);
     }

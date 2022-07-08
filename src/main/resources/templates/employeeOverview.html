@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello From Spring</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+
+
+<h1>Employee Overview</h1>
+
+<div class="col-8 row">
+    <table class="table table-success table-striped">
+        <thead>
+        <tr>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Salary</td>
+            <td>Department</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${employeeList}">
+            <td th:text="${employee.firstname}"/>
+            <td th:text="${employee.lastname}"/>
+            <td th:text="${employee.monthlySalary}"/>
+            <td th:text="${employee.department.code} + ' - ' + ${employee.department.name}"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</html>
