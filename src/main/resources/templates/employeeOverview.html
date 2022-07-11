@@ -20,6 +20,7 @@
             <td>Lastname</td>
             <td>Salary</td>
             <td>Department</td>
+            <td>Action</td>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,16 @@
             <td th:text="${employee.lastname}"/>
             <td th:text="${employee.monthlySalary}"/>
             <td th:text="${employee.department.code} + ' - ' + ${employee.department.name}"/>
+            <td>
+                <form th:action="@{/editEmployee}" th:object="${employee}" method="post">
+                    <input class="d-none" name="employeeId" th:value="${employee.id}">
+                    <button class="btn btn-primary">Edit</button>
+                </form>
+                <form th:action="@{/deleteEmployee}" th:object="${employee}" method="post">
+                    <input class="d-none" name="employeeId" th:value="${employee.id}">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
