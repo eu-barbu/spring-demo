@@ -1,9 +1,10 @@
 package com.demo.springdemo.controller;
 
+import com.demo.springdemo.dto.EmployeeDto;
 import com.demo.springdemo.model.Department;
 import com.demo.springdemo.model.Employee;
-import com.demo.springdemo.repository.DepartmentRepository;
-import com.demo.springdemo.repository.EmployeeRepository;
+import com.demo.springdemo.service.DepartmentService;
+import com.demo.springdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +19,14 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeService employeeService;
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    DepartmentService departmentService;
 
     @GetMapping(value = "/employeeOverview")
     public String employeeOverview(Model model){
-        List<Employee> employeeList = employeeRepository.findAll();
+        List<EmployeeDto> employeeList = employeeService.getAllEmployees();
         model.addAttribute("employeeList", employeeList);
         return "employeeOverview";
     }
@@ -35,7 +36,7 @@ public class EmployeeController {
         Employee myEmployee = Employee.builder().build();
         model.addAttribute("employee", myEmployee);
 
-        List<Department> departmentList = departmentRepository.findAll();
+        List<Department> departmentList = departmentService.getAllDepartments();
         model.addAttribute("departmentList", departmentList);
 
         return "employeeForm";
@@ -43,16 +44,16 @@ public class EmployeeController {
 
     @PostMapping(value = "/submitEmployee")
     public String submitEmployee(@ModelAttribute Employee employee, Model model){
-        employeeRepository.save(employee);
+        employeeService.saveEmployee(employee);
         return "redirect:/employeeOverview";
     }
 
     @PostMapping(value = "/editEmployee")
     public String editEmployee(@RequestParam("employeeId") int id, Model model){
-        Employee employee = employeeRepository.findById(id).get();
+        Employee employee = employeeService.getEmployeeById(id);
         model.addAttribute("employee", employee);
 
-        List<Department> departmentList = departmentRepository.findAll();
+        List<Department> departmentList = departmentService.getAllDepartments();
         model.addAttribute("departmentList", departmentList);
 
         return "employeeForm";
@@ -60,7 +61,7 @@ public class EmployeeController {
 
     @PostMapping(value = "/deleteEmployee")
     public String deleteEmployee(@RequestParam("employeeId") int id){
-        employeeRepository.deleteById(id);
+        employeeService.deleteEmployee(id);
         return "redirect:/employeeOverview";
     }
 
